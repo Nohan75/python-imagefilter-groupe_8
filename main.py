@@ -15,11 +15,25 @@ args = sys.argv
 firstArg = args[1]
 thirdArg = args[3]
 
-if args[1] == "--i":
-    input = args[2]
+if "--i" in args:
+    x = args.index("--i")
+    input = args[x+1]
 
-if args[3] == "--o":
-    output = args[4]
+if "--o" in args:
+    y = args.index("--o")
+    output = args[y+1]
+
+#if "--filters" in args:
+#    z = args.index("--filters")
+#    filters = args[z+1]
+#    if filters == nb:
+#        nb.transnb(f'{input}/{img}', out)
+#        z += 1
+
+
+
+
+
 
 path = os.getcwd()
 print ("The current working directory is %s" % path)
