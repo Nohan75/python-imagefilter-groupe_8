@@ -7,6 +7,7 @@ import fnmatch
 import sys
 
 input = 'input'
+output = 'output'
 
 
 args = sys.argv
@@ -34,7 +35,7 @@ for entry in listOfFiles:
     elif fnmatch.fnmatch(entry,pattern2):
             print (entry)
 
-path = "Data/output/"
+path = output
 
 try:
     os.mkdir(path)
@@ -49,6 +50,6 @@ for img in listOfFiles:
     out = path + img
     print(out)
     nb.transnb(f'{input}/{img}', out)
-    blur.transblur(f'Data/output/{img}', 5, out)
-    dilate.transdilate(f'Data/output/{img}', out)
+    blur.transblur(f'{output}/{img}', 5, out)
+    dilate.transdilate(f'{output}/{img}', out)
 
