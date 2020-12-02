@@ -1,0 +1,4 @@
+usage: imagefilter
+    -h,----help
+    -i,--input-dir <directory>
+    -o,--output-dir <directory>
