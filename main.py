@@ -16,7 +16,7 @@ except OSError:
 else:
     print ("Successfully created the directory %s " % path)
 
-nb.transnb()
-blur.transblur()
-dilate.transdilate()
+# nb.transnb()
+blur.transblur(4)
+# dilate.transdilate()
 
