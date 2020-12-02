@@ -1,8 +1,7 @@
 import cv2
 
-def transnb():
+def transnb(src, out):
     try:
-        src = "Data/imgs/schtroumpf.jpg"
         tmp = src[-4]
         for i in [-3, -2, -1]:
             tmp = tmp + src[i]
@@ -12,7 +11,7 @@ def transnb():
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             # cv2.imshow('Original image', image)
             # cv2.imshow('Gray image', gray)
-            cv2.imwrite("Data/output/schtroumpf_grey.jpg", gray)
+            cv2.imwrite(out, gray)
             return
         else:
             print(f'Not an image. EXTENSION={tmp} IN {src}')

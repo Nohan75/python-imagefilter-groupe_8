@@ -19,7 +19,7 @@ for entry in listOfFiles:
     elif fnmatch.fnmatch(entry,pattern2):
             print (entry)
 
-path = "Data/output"
+path = "Data/output/"
 
 try:
     os.mkdir(path)
@@ -28,7 +28,12 @@ except OSError:
 else:
     print ("Successfully created the directory %s " % path)
 
-nb.transnb()
-blur.transblur(5)
-# dilate.transdilate()
+
+for img in listOfFiles:
+    print(img)
+    out = path + img
+    print(out)
+    # dilate.transdilate(f'Data/imgs/{img}', out)
+    nb.transnb(f'Data/imgs/{img}', out)
+    blur.transblur(f'Data/output/{img}', 5, out)
 

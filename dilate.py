@@ -3,9 +3,8 @@ import cv2
 import numpy as np
 
 
-def transdilate():
+def transdilate(src, out):
     try:
-        src = "Data/imgs/schtroumpf.jpg"
         tmp = src[-4]
         for i in [-3, -2, -1]:
             tmp = tmp + src[i]
@@ -14,7 +13,7 @@ def transdilate():
             image = cv2.imread(src)
             kernel = np.ones((15, 15), np.uint8)
             dilate = cv2.dilate(image, kernel, iterations=1)
-            cv2.imwrite("Data/output/schtroumpf-dilate.jpg", dilate)
+            cv2.imwrite(out, dilate)
         else:
             print(f'Not an image. EXTENSION={tmp} IN {src}')
 

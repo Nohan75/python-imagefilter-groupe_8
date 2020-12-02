@@ -1,8 +1,7 @@
 import cv2
 
-def transblur(x):
+def transblur(src, x, out):
     try:
-        src = 'Data/imgs/schtroumpf.jpg'
         tmp = src[-4]
         for i in [-3, -2, -1]:
             tmp = tmp + src[i]
@@ -15,7 +14,7 @@ def transblur(x):
             else:
                 blur = cv2.GaussianBlur(image,(x,x),0)
             # cv2.imshow("Blured Image", blur)
-            cv2.imwrite("Data/output/schtroumpf_blured.jpg", blur)
+            cv2.imwrite(out, blur)
             return
         else:
             print(f'Not an image. EXTENSION={tmp} IN {src}')
