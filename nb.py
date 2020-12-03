@@ -6,7 +6,6 @@ def transnb(src, out):
         for i in [-3, -2, -1]:
             tmp = tmp + src[i]
         if tmp == '.jpg' or tmp == '.png':
-            print('IMG B&W')
             image = cv2.imread(src)
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             # cv2.imshow('Original image', image)

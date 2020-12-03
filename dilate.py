@@ -3,15 +3,14 @@ import cv2
 import numpy as np
 
 
-def transdilate(src, out):
+def transdilate(src, x, out):
     try:
         tmp = src[-4]
         for i in [-3, -2, -1]:
             tmp = tmp + src[i]
         if tmp == '.jpg' or tmp == '.png':
-            print('IMG DILATE')
             image = cv2.imread(src)
-            kernel = np.ones((15, 15), np.uint8)
+            kernel = np.ones((x, x), np.uint8)
             dilate = cv2.dilate(image, kernel, iterations=1)
             cv2.imwrite(out, dilate)
         else:

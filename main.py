@@ -4,8 +4,9 @@ import nb
 import blur
 import dilate
 import fnmatch
-import sys
+import sys, getopt
 import read_help as help
+import getopt
 
 input = 'input'
 output = 'output'
@@ -24,6 +25,8 @@ if "--i" in args:
 if "--o" in args:
     y = args.index("--o")
     output = args[y+1]
+
+
 
 #if "--filters" in args:
 #    z = args.index("--filters")
@@ -60,12 +63,39 @@ try:
         print("Successfully created the directory %s " % path)
 
     for img in listOfFiles:
-        print(img)
         out = path + img
-        print(out)
-        nb.transnb(f'{input}/{img}', out)
-        blur.transblur(f'{output}/{img}', 5, out)
-        dilate.transdilate(f'{output}/{img}', out)
+        # nb.transnb(f'{input}/{img}', out)
+        # blur.transblur(f'{output}/{img}', 5, out)
+        # dilate.transdilate(f'{output}/{img}', out)
+        if "--filter" in args:
+            z = args.index("--filter")
+            filters = args[z + 1]
+            filters_list = filters.split('|')
+            for fltr in filters_list:
+                if ':' in fltr:
+                    param = fltr.split(':')
+
+
+                    print(f'FLTR IS {fltr} ')
+                if 'grayscale' in filters_list:
+                    print('GREY <--->')
+                    nb.transnb(f'{input}/{img}', out)
+                    input = output
+
+                if 'blur' in fltr:
+                    param_blur = fltr.split(':')
+                    print(f'BLUR {img} ----->{param_blur}')
+                    nbr = int(param_blur[1])
+                    # print(f'BLURED <-----> {nbr}')
+                    blur.transblur(f'{input}/{img}', int(nbr), out)
+                    input = output
+                if 'dilate' in fltr:
+                    param_dilate = fltr.split(':')
+                    print(f'DILATE ------> {param_dilate}')
+                    nbr = int(param_dilate[1])
+                    # print(f'<------> {nbr}')
+                    dilate.transdilate(f'{input}/{img}', nbr, out)
+                    input = output
 
 except FileNotFoundError:
     if "--h" not in args:

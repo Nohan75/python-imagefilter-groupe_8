@@ -6,7 +6,6 @@ def transblur(src, x, out):
         for i in [-3, -2, -1]:
             tmp = tmp + src[i]
         if tmp == '.jpg' or tmp == '.png':
-            print('IMG BLUR')
             image = cv2.imread(src, cv2.IMREAD_UNCHANGED)
             if x < 0 or x % 2 == 0:
                 print('Enter an odd and positive value')
