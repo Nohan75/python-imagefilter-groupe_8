@@ -1,6 +1,12 @@
+"""The module allowing to tranform a colored image into a black and white one"""
 import cv2
 
 def transnb(src, out):
+    """
+    Appplies a black and white filter to an image
+    :param src: The image to be turned grey
+    :param out: The directory where the transformed images are stored
+    """
     try:
         tmp = src[-4]
         for i in [-3, -2, -1]:

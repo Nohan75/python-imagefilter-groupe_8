@@ -1,6 +1,13 @@
+"""The module allowing to transform an image into a blured one"""
 import cv2
 
 def transblur(src, x, out):
+    """
+    Apllies a blur filter to an image
+    :param src: The image to be blurred
+    :param x: The strength of the blur
+    :param out: The directory where the transformed images are stored
+    """
     try:
         tmp = src[-4]
         for i in [-3, -2, -1]:

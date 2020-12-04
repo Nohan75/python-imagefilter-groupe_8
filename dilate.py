@@ -1,9 +1,15 @@
-import os
+"""The module allowing to tranform an image into a dilated one"""
 import cv2
 import numpy as np
 
 
 def transdilate(src, x, out):
+    """
+    Applies a dilatation filter to an image
+    :param src: The image to be dilated
+    :param x: The strength of the dilatation
+    :param out: The directory where the transformed images are stored
+    """
     try:
         tmp = src[-4]
         for i in [-3, -2, -1]:

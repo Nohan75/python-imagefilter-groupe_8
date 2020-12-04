@@ -1,12 +1,11 @@
+"""The main running program"""
 import os
-import cv2
 import nb
 import blur
 import dilate
 import fnmatch
 import sys
 import read_help as help
-import getopt
 import log
 import shutil
 
