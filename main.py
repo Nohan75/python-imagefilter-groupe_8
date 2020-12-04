@@ -27,36 +27,6 @@ if "--i" in args:
 if "--o" in args:
     y = args.index("--o")
     output = args[y+1]
-    src_files = os.listdir(input)
-    for file_name in src_files:
-        full_file_name = os.path.join(input, file_name)
-        if os.path.isfile(full_file_name):
-            shutil.copy(full_file_name, output)
-
-
-
-
-if "--log-file" in args:
-    y = args.index("--log-file")
-    y += 1
-    if args[y] == "image.log":
-        log.dump_log()
-    else:
-        print("Incorrect file name")
-
-
-
-#if "--filters" in args:
-#    z = args.index("--filters")
-#    filters = args[z+1]
-#    if filters == nb:
-#        nb.transnb(f'{input}/{img}', out)
-#        z += 1
-
-
-
-
-
 
 path = os.getcwd()
 print ("The current working directory is %s" % path)
@@ -80,12 +50,14 @@ try:
         print("Creation of the directory %s failed" % path)
     else:
         print("Successfully created the directory %s " % path)
+    src_files = os.listdir(input)                                                                                          
+    for file_name in src_files:                                                                                            
+        full_file_name = os.path.join(input, file_name)                                                                    
+        if os.path.isfile(full_file_name):                                                                                 
+            shutil.copy(full_file_name, output)
 
     for img in listOfFiles:
         out = path + img
-        # nb.transnb(f'{input}/{img}', out)
-        # blur.transblur(f'{output}/{img}', 5, out)
-        # dilate.transdilate(f'{output}/{img}', out)
         if "--filter" in args:
             z = args.index("--filter")
             filters = args[z + 1]
@@ -125,4 +97,8 @@ except FileNotFoundError:
         print('Please enter an input path with -i <path>')
 
 
-
+if "--log-file" in args:            
+    y = args.index("--log-file")    
+    y += 1                          
+    if args[y] == "image.log":      
+        log.dump_log()
