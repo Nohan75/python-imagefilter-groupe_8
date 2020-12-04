@@ -1,5 +1,6 @@
 """The module allowing to tranform a colored image into a black and white one"""
 import cv2
+import os
 
 def transnb(src, out):
     """
@@ -20,5 +21,6 @@ def transnb(src, out):
             return
         else:
             print(f'Not an image. EXTENSION={tmp} IN {src}')
+
     except cv2.error as e:
         print(f'ERROR={e}')

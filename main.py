@@ -88,6 +88,8 @@ try:
             print(entry)
         elif fnmatch.fnmatch(entry, pattern2):
             print(entry)
+        else:
+            os.remove(f'Data/imgs/{entry}')
     path = output
 
     try:

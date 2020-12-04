@@ -1,5 +1,6 @@
 """The module allowing to transform an image into a blured one"""
 import cv2
+import os
 
 def transblur(src, x, out):
     """

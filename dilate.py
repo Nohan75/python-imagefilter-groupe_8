@@ -1,6 +1,7 @@
 """The module allowing to tranform an image into a dilated one"""
 import cv2
 import numpy as np
+import os
 
 
 def transdilate(src, x, out):
