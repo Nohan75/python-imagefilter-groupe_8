@@ -10,8 +10,9 @@ import log
 import shutil
 import conf
 
-input = 'input'
-output = 'output'
+
+
+
 
 
 args = sys.argv
@@ -24,7 +25,7 @@ if "--config-file" in args:
     if os.path.exists(file):
         input = conf.input
         output = conf.output
-        filters_list = conf.filters.split('|')
+        filters_list = conf.filters
     else:
         print('This file doesn\'t exist')
 
@@ -41,7 +42,8 @@ if "--i" in args:
 if "--o" in args:
     y = args.index("--o")
     output = args[y+1]
-
+<<<<<<< HEAD
+=======
 
 
 
@@ -73,6 +75,7 @@ if "--log-file" in args:
 
 
 
+>>>>>>> Nohan
 
 path = os.getcwd()
 print ("The current working directory is %s" % path)
@@ -96,6 +99,11 @@ try:
         print("Creation of the directory %s failed" % path)
     else:
         print("Successfully created the directory %s " % path)
+    src_files = os.listdir(input)                                                                                          
+    for file_name in src_files:                                                                                            
+        full_file_name = os.path.join(input, file_name)                                                                    
+        if os.path.isfile(full_file_name):                                                                                 
+            shutil.copy(full_file_name, output)
 
     src_files = os.listdir(input)
     for file_name in src_files:
@@ -104,13 +112,48 @@ try:
             shutil.copy(full_file_name, output)
 
     for img in listOfFiles:
+<<<<<<< HEAD
+        out = path + img
+        if "--filter" in args:
+            z = args.index("--filter")
+            filters = args[z + 1]
+            filters_list = filters.split('|')
+            print("CECI EST TSET")
+            for fltr in filters_list:
+                if ':' in fltr:
+                    param = fltr.split(':')
+                    print(f'FLTR IS {fltr} ')
+                if 'grayscale' in filters_list:
+                    print('GREY <--->')
+                    nb.transnb(f'{input}{img}', out)
+                    print(f'{input}{img}')
+                    input = output
+                    log.log(img + " grey")
+                if 'blur' in fltr:
+                    param_blur = fltr.split(':')
+                    print(f'BLUR {img} ----->{param_blur}')
+                    nbr = int(param_blur[1])
+                    # print(f'BLURED <-----> {nbr}')
+                    blur.transblur(f'{input}{img}', int(nbr), out)
+                    print(f'{input}{img}')
+                    input = output
+                    log.log(img + " blured")
+                if 'dilate' in fltr:
+                    param_dilate = fltr.split(':')
+                    print(f'DILATE ------> {param_dilate}')
+                    nbr = int(param_dilate[1])
+                    # print(f'<------> {nbr}')
+                    dilate.transdilate(f'{input}{img}', nbr, out)
+                    print(f'{input}{img}')
+                    input = output
+                    log.log(img + " dilated")
+=======
         out = output + img
         # nb.transnb(f'{input}/{img}', out)
         # blur.transblur(f'{output}/{img}', 5, out)
         # dilate.transdilate(f'{output}/{img}', out)
 
         for fltr in filters_list:
-            print(fltr)
             if ':' in fltr:
                 param = fltr.split(':')
                 print(f'FLTR IS {fltr} ')
@@ -138,10 +181,15 @@ try:
                 print(f'{input}{img}')
                 input = output
                 log.log(img + " dilated")
+>>>>>>> Nohan
 
 except FileNotFoundError:
     if "--h" not in args:
         print('Please enter an input path with -i <path>')
 
 
-
+if "--log-file" in args:            
+    y = args.index("--log-file")    
+    y += 1                          
+    if args[y] == "image.log":      
+        log.dump_log()
