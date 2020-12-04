@@ -1,3 +1,4 @@
+"""Calls the datas form the config file if it is called in the CLI"""
 import configparser
 
 parser = configparser.ConfigParser()
